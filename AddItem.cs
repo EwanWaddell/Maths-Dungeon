@@ -1,3 +1,4 @@
+  
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,10 @@ public class AddItem : MonoBehaviour
     public Transform[] slots;
     public bool[] isFull;
     public GameObject Item;
-
+     public Color selectedColor;
+    public Color unselectedColor;
     public int currentSlot;
+    public GameObject DeleteScreen;
 
     void Start(){ 
         slots = new Transform[transform.childCount];
@@ -19,6 +22,14 @@ public class AddItem : MonoBehaviour
 
     void Update() {
         CheckFull();
+          for(int i = 0; i < slots.Length; i++) {
+            if(slots[i].GetComponent<Slot>().ID == currentSlot && slots[i].childCount > 0) {
+                slots[i].GetComponent<Image>().color = selectedColor;
+            }
+            else {
+                slots[i].GetComponent<Image>().color = unselectedColor;
+            }
+        }
     }
 
     public void FindSlots(){
@@ -52,6 +63,8 @@ public class AddItem : MonoBehaviour
     }
     public void DeleteItems() 
     {
+         if(slots[currentSlot].childCount > 0  ) {
           Destroy(slots[currentSlot].GetChild(0).gameObject);
+         }
     }
 }
