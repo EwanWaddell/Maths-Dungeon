@@ -22,7 +22,7 @@ public class UserInput : MonoBehaviour
         }
         else
         {
-        Debug.Log("OtherInput");
+        inputField.text = "Please put Yes or No";
         }        
     }
 }
