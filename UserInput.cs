@@ -18,7 +18,8 @@ public class UserInput : MonoBehaviour
         }
         if(inputField.text == "no" || inputField.text == "NO" || inputField.text == "No" || inputField.text == "nO")
         {
-            Debug.Log("No");
+            HaveYouUsedScreen.SetActive(false);
+            HowToUseScreen.SetActive(true);
         }
         else
         {
