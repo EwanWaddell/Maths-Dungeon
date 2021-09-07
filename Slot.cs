@@ -11,8 +11,10 @@ public class Slot : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<AddItem>();
     }
 
-    public void SelectSlot()
-    { 
-        manager.currentSlot = ID;
+    public void SelectSlot() { 
+        if (transform.childCount > 0) 
+        {
+            manager.currentSlot = ID; //This makes it so that when you click a slot it becomes selected
+        }
     }
 }    
